@@ -1,0 +1,3 @@
+[submodule "mayan"]
+	path = mayan
+	url = git://github.com/rosarior/mayan.git
