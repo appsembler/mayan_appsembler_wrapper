@@ -21,6 +21,10 @@ Copy the appsembler_settings.py file into the ``mayan`` directory::
 Copy the manage.py file into the ``mayan`` directory::
 
     $ cp manage.py mayan
+
+Copy the settings overriding file into the ``mayan`` directory::
+
+    $ cp settings_local.py mayan 
     
 This will be done automatically by our web-based deploy process, but when using the command line, it needs to be done manually.
 
@@ -43,7 +47,7 @@ You can deploy this app to Appsembler with just a few commands. First download t
 
 Then you can deploy it the first time with::
 
-    $ stackato target http://api.somedomain.com
+    $ stackato target https://api.appsembler.com
     $ stackato login --email name@domain.com --password *****
     $ stackato push
 
