@@ -15,7 +15,7 @@ framework:
     
 env:
     DJANGO_SETTINGS_MODULE: mayan.appsembler_settings
-    PYTHONPATH: /app/app:/app/app/mayan
+    PYTHONPATH: /app/app/mayan
   
 hooks:
     pre-staging:
@@ -23,11 +23,10 @@ hooks:
         - sudo apt-get -y install git-core tesseract-ocr unpaper ghostscript libmysqlclient-dev graphicsmagick
 
     post-staging:
-        - pip install --user -r requirements.pip
         - python mayan/manage.py syncdb --noinput
         - python mayan/manage.py migrate --noinput
         - python mayan/manage.py collectstatic -l --noinput
-       
+
 services:
     # TODO: make this conditional, so there's also support for PostgreSQL, Redis, Mongo, etc.
     mysql: mysql-mayan
