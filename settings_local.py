@@ -1,6 +1,3 @@
-DEBUG=True
-DEVELOPMENT=True
-
 CONVERTER_GRAPHICS_BACKEND='converter.backends.graphicsmagick'
-CONVERTER_GM_SETTINGS = u'-density 180'
+CONVERTER_GM_SETTINGS = u'-density 150'
 
