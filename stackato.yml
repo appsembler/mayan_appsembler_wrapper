@@ -5,9 +5,9 @@
 
 name: mayan
 
-mem: 64M
+mem: 128M
 
-instances: 1
+instances: 2
  
 framework:
     type: python
@@ -34,3 +34,7 @@ services:
 ignores: 
   - .git
   - .pyc
+
+processes:
+    web: $STACKATO_UWSGI --static-map /mayan-static=$HOME/mayan/static/
+    #web: $STACKATO_UWSGI --check-static $HOME/mayan/static/
