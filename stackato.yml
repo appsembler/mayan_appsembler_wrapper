@@ -5,9 +5,9 @@
 
 name: mayan
 
-mem: 128M
+mem: 96M
 
-instances: 2
+instances: 1
  
 framework:
     type: python
@@ -20,12 +20,12 @@ env:
 hooks:
     pre-staging:
         - sudo apt-get -y update
-        - sudo apt-get -y install git-core tesseract-ocr tesseract-ocr-eng tesseract-ocr-spa unpaper ghostscript libmysqlclient-dev graphicsmagick
+        - sudo apt-get -y install git-core tesseract-ocr tesseract-ocr-eng unpaper ghostscript libmysqlclient-dev
 
     post-staging:
         - python mayan/manage.py syncdb --noinput
         - python mayan/manage.py migrate --noinput
-        - python mayan/manage.py collectstatic -l --noinput
+        - python mayan/manage.py collectstatic --noinput
 
 services:
     # TODO: make this conditional, so there's also support for PostgreSQL, Redis, Mongo, etc.
@@ -36,5 +36,4 @@ ignores:
   - .pyc
 
 processes:
-    web: $STACKATO_UWSGI --static-map /mayan-static=$HOME/mayan/static/
-    #web: $STACKATO_UWSGI --check-static $HOME/mayan/static/
+    web: $STACKATO_UWSGI --static-map /mayan-static=$HOME/mayan/static
